@@ -367,24 +367,31 @@ Co. - PNSC Infrastructure Pvt. Ltd. - SVK Infrastructures - DSRV Infra Co. Ltd. 
 
   /* Smaller screens: make paragraph full width but still pill-like */
   @media (max-width: 600px) {
-    .trusted-section p {
-      display: block;
-      width: calc(100% - 40px);
-      margin: 0.5rem auto 0;
-      text-align: center;
-    }
-
-    .trusted-section h3 {
-      display: block;
-      margin: 0 auto;
-      padding: 8px 14px;
-    }
+  .trusted-section {
+    padding: 20px 10px;  /* overall padding inside the section */
   }
+
+  .trusted-section p {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 1rem auto;   /* more space above & below */
+    text-align: center;
+  }
+
+  .trusted-section h3 {
+    max-width: 328px;    /* controls wrapping */
+    font-size: 2rem;     /* scale font for mobile */
+    line-height: 1.5;    /* increase line spacing */
+    margin: 1rem auto;   /* space around heading */
+    text-align: center;  /* center heading */
+  }
+}
+
 </style>
 
 <div class="trusted-section">
   <h3 style="color:#ffffff; font-weight:700; margin:0;">
-    India Leading Contractors
+     Trusted by India Leading Contractors
   </h3>
 
   <p style="color:#ffffff; font-weight:700; margin-top:0.5rem;">
@@ -683,38 +690,116 @@ material having 15 years of experience in the field.</span>
           </div>
       </div>
   </div> -->
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#f5f7fb;color:#222}
+<style>
+  /* Scope everything to .team-section so it doesn't affect other page styles */
+  .team-section *, .team-section *::before, .team-section *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    .team-row{display:flex;flex-wrap:nowrap;gap:20px;align-items:stretch;justify-content:center;padding:20px}
+  .team-section {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    color: #222;
+  }
 
-    .row{flex:1 1 calc(25% - 15px);min-width:210px}
+  /* container for all cards */
+  .team-section .team-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:-10px;
+    align-items:stretch;
+    justify-content:center;
+    padding:20px;
+  }
 
-    .card{background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(23,32,64,0.06);overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:18px;height:100%}
+  /* default: 4-per-row (desktop) */
+  .team-section .row{flex:1 1 calc(25% - 15px);min-width:210px}
 
-    .image img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:4px solid #fff;box-shadow:0 6px 18px rgba(20,30,60,0.08);display:block;margin:6px auto}
+  .team-section .card{
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(23,32,64,0.06);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:18px;
+    height:100%;
+    transition:transform .18s ease;
+  }
 
-    .info{padding:12px 8px}
-    .info h3{margin:8px 0 6px;font-size:1.05rem;line-height:1.2}
-    .info span{display:block;color:#555;font-size:0.92rem;line-height:1.35}
+  .team-section .card:hover{transform:translateY(-6px)}
 
-    .icons{margin-top:12px}
-    .icons a{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;margin:0 6px;border-radius:50%;text-decoration:none;font-size:16px;color:#555;transition:transform .18s ease,background-color .18s ease,color .18s ease;border:1px solid rgba(0,0,0,0.04);background:transparent}
-    .icons a:hover{transform:translateY(-4px);color:#fff}
-    .icons a.facebook:hover{background:#3b5998}
-    .icons a.twitter:hover{background:#1da1f2}
-    .icons a.instagram:hover{background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)}
-    .icons a.linkedin:hover{background:#0077b5}
+  .team-section .image img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #fff;
+    box-shadow:0 6px 18px rgba(20,30,60,0.08);
+    display:block;
+    margin:6px auto;
+  }
 
-    @media (max-width:1100px){.team-row{flex-wrap:wrap;justify-content:center}.row{flex:1 1 calc(50% - 15px)}}
-    @media (max-width:560px){.row{flex:1 1 100%}}
-  </style>
+  .team-section .info{padding:12px 8px}
+  .team-section .info h3{margin:8px 0 6px;font-size:1.05rem;line-height:1.2}
+  .team-section .info span{display:block;color:#555;font-size:0.92rem;line-height:1.35}
+
+  .team-section .icons{margin-top:12px}
+  .team-section .icons a{
+    display:inline-flex;
+    width:36px;height:36px;
+    align-items:center;justify-content:center;
+    margin:0 6px;border-radius:50%;
+    text-decoration:none;font-size:16px;color:#555;
+    transition:transform .18s ease,background-color .18s ease,color .18s ease;
+    border:1px solid rgba(0,0,0,0.04);
+    background:transparent;
+  }
+  .team-section .icons a:hover{transform:translateY(-4px);color:#fff}
+  .team-section .icons a.facebook:hover{background:#3b5998}
+  .team-section .icons a.twitter:hover{background:#1da1f2}
+  .team-section .icons a.instagram:hover{background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)}
+  .team-section .icons a.linkedin:hover{background:#0077b5}
+
+  /* Force first 4 cards in one line on larger screens */
+  @media (min-width:1101px) {
+    .team-section .row:nth-child(-n+4) {
+      flex: 0 0 calc(25% - 15px);
+      max-width: calc(25% - 15px);
+    }
+  }
+
+  /* Tablet: two cards per row */
+  @media (max-width:1100px){
+    .team-section .team-row{justify-content:center}
+    .team-section .row{flex:1 1 calc(50% - 15px);min-width:260px}
+  }
+
+  /* Small tablet / large phone: force single card per row */
+  @media (max-width:768px){
+    .team-section .team-row{gap:18px;justify-content:center}
+    .team-section .row{flex:1 1 100%;max-width:420px}
+    .team-section .card{margin:0 auto}
+  }
+
+  /* Mobile */
+  @media (max-width:560px){
+    .team-section .row{flex:1 1 100%;max-width:36rem;width:100%}
+    .team-section .card{padding:16px}
+    .team-section .image img{width:110px;height:110px}
+    .team-section .info h3{font-size:1rem}
+    .team-section .info span{font-size:0.9rem}
+  }
+</style>
 </head>
 <body>
+  <section class="team-section">
   <div class="team-row">
     <div class="row">
-      <div class="card">
+      <div class="card" style="height: 450px;">
         <div class="image"><img src="./images/SG.jpeg" alt="Team member 1"></div>
         <div class="info">
           <h3>Mr. Sanjeev Kumar Gupta</h3>
@@ -729,7 +814,7 @@ material having 15 years of experience in the field.</span>
       </div>
     </div>
     <div class="row">
-      <div class="card">
+      <div class="card" style="height: 450px;">
         <div class="image"><img src="./images/RG.jpeg" alt="Team member 2"></div>
         <div class="info">
           <h3>Mr. Rakesh Kumar Gupta</h3>
@@ -744,7 +829,7 @@ material having 15 years of experience in the field.</span>
       </div>
     </div>
     <div class="row">
-      <div class="card">
+      <div class="card" style="height: 450px;">
         <div class="image"><img src="./images/MG.jpeg" alt="Team member 3"></div>
         <div class="info">
           <h3>Mr. Mayank Goel</h3>
@@ -759,7 +844,7 @@ material having 15 years of experience in the field.</span>
       </div>
     </div>
     <div class="row">
-      <div class="card">
+      <div class="card" style="height: 450px;">
         <div class="image"><img src="./images/AG.jpeg" alt="Team member 4"></div>
         <div class="info">
           <h3>Mr. Anuj Gupta</h3>
@@ -774,6 +859,71 @@ material having 15 years of experience in the field.</span>
       </div>
     </div>
   </div>
+  </section>
+  <div class="row">
+      <div class="card">
+        <div class="image"><img src="./images/C1.jpeg" alt="Team member 3"></div>
+        <div class="info">
+          <h3>Mr. S.K. Gupta</h3>
+          <span>Consulting Civil Engineer (Quality), Retired SM/XEN ITPO, 39+ yrs experience in civil engineering & quality standards.</span>
+          <div class="icons">
+            <a href="https://www.facebook.com/" class="fab fa-facebook-f facebook"></a>
+            <a href="https://twitter.com/login" class="fab fa-twitter twitter"></a>
+            <a href="https://www.instagram.com/" class="fab fa-instagram instagram"></a>
+            <a href="https://www.linkedin.com/" class="fab fa-linkedin linkedin"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="image"><img src="./images/C2.jpeg" alt="Team member 3"></div>
+        <div class="info">
+          <h3>Mr. Adesh Kumar Bajpai </h3>
+          <span>Finance Head
+25'yrs of experience in finance n accounting.</span>
+          <div class="icons">
+            <a href="https://www.facebook.com/" class="fab fa-facebook-f facebook"></a>
+            <a href="https://twitter.com/login" class="fab fa-twitter twitter"></a>
+            <a href="https://www.instagram.com/" class="fab fa-instagram instagram"></a>
+            <a href="https://www.linkedin.com/" class="fab fa-linkedin linkedin"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="image"><img src="./images/C3.jpeg" alt="Team member 3"></div>
+        <div class="info">
+          <h3>Mr. Deepak Rajput</h3>
+          <span>Billing incharge
+Responsibility to maintain proper billing procedures.</span>
+          <div class="icons">
+            <a href="https://www.facebook.com/" class="fab fa-facebook-f facebook"></a>
+            <a href="https://twitter.com/login" class="fab fa-twitter twitter"></a>
+            <a href="https://www.instagram.com/" class="fab fa-instagram instagram"></a>
+            <a href="https://www.linkedin.com/" class="fab fa-linkedin linkedin"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="image"><img src="./images/C4.jpeg" alt="Team member 3"></div>
+        <div class="info">
+          <h3>Mr. Karnesh Khitouliya</h3>
+          <span>20 yrs experience in HR n Admin
+Responsibility to maintain proper procedure protocol n liaisoning.</span>
+          <div class="icons">
+            <a href="https://www.facebook.com/" class="fab fa-facebook-f facebook"></a>
+            <a href="https://twitter.com/login" class="fab fa-twitter twitter"></a>
+            <a href="https://www.instagram.com/" class="fab fa-instagram instagram"></a>
+            <a href="https://www.linkedin.com/" class="fab fa-linkedin linkedin"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 </section>
 
 <!-- Trusted Section -->
@@ -835,16 +985,154 @@ material having 15 years of experience in the field.</span>
   }
 </style>
 
+<!-- UPDATED trusted-section (transparent removed) -->
 <div class="trusted-section">
-  <!-- <h3>Trusted by India’s Leading Contractors</h3>
-  <p>
-    We proudly serve over 300+ reputed Government Contractors and Builders including: - B.L. Infra Projects Pvt. Ltd. - Indus Construction
-    Co. - PNSC Infrastructure Pvt. Ltd. - SVK Infrastructures - DSRV Infra Co. Ltd. - Manish Buildwel.
-  </p> -->
+  <style>
+    /* ===== Trusted / Clients carousel (desktop + mobile responsive) ===== */
+    .trusted-section { padding: 30px 20px; box-sizing: border-box; /* no background */ }
 
-  <!-- 🔹 Replace 'new-image.jpg' with your actual image path -->
-  <img src="./images/partner2.png" alt="Trusted Contractors">
+    .trusted-inner {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Title block on left */
+    .trusted-title {
+      flex: 0 0 160px; /* fixed width on desktop */
+      text-align: left;
+      padding-left: 10px;
+    }
+    .trusted-title h3 {
+      margin: 0;
+      line-height: 0.95;
+      color: #2842c6; /* red tint like your image */
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    /* Marquee / scrolling area */
+    .marquee {
+      flex: 1 1 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      /* make content wide so duplicate can scroll smoothly */
+      min-width: 200%;
+      box-sizing: content-box;
+      animation: marquee-scroll 20s linear infinite;
+      will-change: transform;
+    }
+
+    /* One set of logos (we duplicate it in markup for seamless loop) */
+    .logo-card {
+      flex: 0 0 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      padding: 12px;
+      box-sizing: border-box;
+    }
+    .logo-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Pause when hovered (desktop) */
+    .marquee:hover .marquee-track { animation-play-state: paused; cursor: grab; }
+
+    /* Animation: move left by 50% (we duplicated items -> seamless) */
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Accessibility: respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
+    /* ---------- Mobile / small screens ---------- */
+    @media (max-width: 768px) {
+      .trusted-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .trusted-title { flex: none; width: 100%; padding-left: 6px; }
+      .trusted-title h3 { font-size: 26px; text-align: left; color: #4d28c6; }
+      .marquee { width: 100%; }
+      .marquee-track { gap: 14px; animation-duration: 14s; }
+      .logo-card { flex: 0 0 100px; height: 100px; padding: 8px; }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 420px) {
+      .trusted-title h3 { font-size: 22px; }
+      .logo-card { flex: 0 0 90px; height: 90px; }
+    }
+  </style>
+
+  <div class="trusted-inner">
+    <!-- Left title -->
+    <div class="trusted-title">
+  <h4 style="font-size:22px; color:blue; font-weight:bold;">OUR<br>CLIENTS</h4>
 </div>
+
+
+    <!-- Marquee area: duplicate set of logos for infinite seamless scroll -->
+    <div class="marquee" aria-hidden="false" role="region" aria-label="Trusted clients carousel">
+      <div class="marquee-track">
+        <!-- ======== FIRST SET (replace these images) ======== -->
+        <div class="logo-card"><img src="./images/P1.jpeg" alt="Client 1"></div>
+        <div class="logo-card"><img src="./images/P2.jpeg" alt="Client 2"></div>
+        <div class="logo-card"><img src="./images/P3.jpeg" alt="Client 3"></div>
+        <div class="logo-card"><img src="./images/P4.jpeg" alt="Client 4"></div>
+        <div class="logo-card"><img src="./images/P5.jpeg" alt="Client 5"></div>
+        <div class="logo-card"><img src="./images/P6.jpeg" alt="Client 6"></div>
+
+        <!-- ======== SECOND SET (duplicate for smooth loop) ======== -->
+        <div class="logo-card"><img src="./images/P7.jpeg" alt="Client 1"></div>
+        <div class="logo-card"><img src="./images/P8.jpeg" alt="Client 2"></div>
+        <!-- <div class="logo-card"><img src="./images/P" alt="Client 3"></div>
+        <div class="logo-card"><img src="./images/logo4.png" alt="Client 4"></div>
+        <div class="logo-card"><img src="./images/logo5.png" alt="Client 5"></div>
+        <div class="logo-card"><img src="./images/logo6.png" alt="Client 6"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* Pause animation while touching on mobile (better UX) */
+    (function(){
+      const marquee = document.querySelector('.marquee');
+      const track = document.querySelector('.marquee-track');
+      if (!marquee || !track) return;
+
+      let isTouching = false;
+      marquee.addEventListener('touchstart', () => {
+        track.style.animationPlayState = 'paused';
+        isTouching = true;
+      }, {passive: true});
+      marquee.addEventListener('touchend', () => {
+        if (!isTouching) return;
+        track.style.animationPlayState = 'running';
+        isTouching = false;
+      }, {passive: true});
+    })();
+  </script>
+</div>
+
 
 
 
@@ -869,7 +1157,7 @@ material having 15 years of experience in the field.</span>
     </div>
 
     <section class="faq">
-      <h1 class="heading" style="margin-top: -2rem; color: #00bfff;" id="faq">FAQ</h1>
+      <h1 class="heading" style="margin-top: -2rem; color: #000000;" id="faq">FAQ</h1>
       <div class="row">
           <div class="accordion-container">
               <div class="accordion">

@@ -623,7 +623,7 @@ body{
 }
 
 .team .row .card{
-    height: 55rem;
+    height: 35rem;
     width: 25rem;
     background-color: #fff;
     text-align: center;
@@ -1017,7 +1017,7 @@ body{
             width: 100vw;
             text-align: center;
             padding: 0 2rem;
-            background: url(../images/header2.jpeg);
+            background: url(../images/P9.jpeg);
             background-repeat: no-repeat;
             background-size: cover;
         }
