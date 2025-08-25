@@ -1,172 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Company Website</title>
-    <link rel="stylesheet" href="./css/careers.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="icon" href="./images/image.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <script src="./js/main.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRRMC — Directors</title>
+
+  <!-- External CSS / icons -->
+  <link rel="icon" href="./images/image.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+  <!-- Page CSS (embedded as requested) -->
+  <style>
+    /* Reset / base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      color: #e6f7ff;
+      background: linear-gradient(180deg,#0f1724 0%, #071023 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+
+    /* Header */
+    .header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 22px;
+      max-width:1100px;
+      margin: 12px auto;
+      width:calc(100% - 44px);
+      align-items:center;
+    }
+    .header .logo img { width:160px; max-width:100%; height:auto; display:block; }
+    .navbar ul { list-style:none; display:flex; gap:16px; margin:0; padding:0; align-items:center; }
+    .navbar a { color:#cfeffc; text-decoration:none; padding:6px 8px; font-weight:600; opacity:0.95; }
+    .navbar a:hover { color:#ffffff; text-decoration:underline; }
+
+    /* Page hero */
+    .home {
+      padding:24px 0;
+      text-align:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
+      margin: 0 auto 18px;
+    }
+    .home h1 {
+      color:#e6f7ff; font-size:2.2rem; margin-bottom:6px; font-weight:800;
+      letter-spacing: -0.5px;
+      text-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      transform-origin:center;
+      animation: floatIn 700ms ease both;
+    }
+    .home p { color:#bfebff; margin:0 auto; max-width:760px; font-size:1rem; opacity:0.95; }
+
+    /* About section (centered content) */
+    .about-section {
+      max-width:1100px;
+      margin: 18px auto;
+      padding:28px;
+      border-radius:12px;
+      background: linear-gradient(90deg, rgba(6,182,212,0.04), rgba(255,255,255,0.00));
+      border-left: 6px solid rgba(6,182,212,0.18);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 12px 36px rgba(2,6,23,0.55);
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* Make the about-left centered */
+    .about-left {
+      flex:1 1 60%;
+      min-width:260px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;   /* center children horizontally */
+      text-align:center;    /* center text */
+    }
+    .about-right { flex:0 0 0px; display:flex; align-items:center; justify-content:center; }
+    /* .about-right img { width:100%; max-width:260px; height:auto; border-radius:10px; object-fit:cover; box-shadow:0 18px 50px rgba(2,6,23,0.5); border:3px solid rgba(255,255,255,0.03); } */
+
+    .about-section h2 {
+      color:#e6f7ff; font-size:1.45rem; margin:0 0 8px; font-weight:800;
+    }
+    .about-section p.lead { color:#d8f6ff; margin:6px 0 10px; font-size:1rem; line-height:1.55; max-width:900px; }
+
+    /* Credentials grid centered */
+    .about-section .credentials {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:10px;
+      margin-top:14px;
+      width:100%;
+      justify-items:center;   /* center items inside grid cells */
+      justify-content:center; /* center the whole grid */
+    }
+    .cred-item {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:700;
+      color:#dff9ff;
+      border:1px solid rgba(255,255,255,0.02);
+      box-shadow: inset 0 -2px 6px rgba(0,0,0,0.12);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      justify-content:center; /* center icon+text */
+      width:100%;
+      max-width:320px;
+    }
+    .cred-item i { font-size:1.05rem; color:rgba(6,182,212,0.95); }
+
+    .board-title { margin-top:18px; color:#cfeffc; font-weight:800; letter-spacing:0.2px; text-align:center; }
+    .board-list {
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:10px;
+      width:100%;
+      justify-items:center; /* center cards */
+    }
+    .board-card {
+      background:transparent;
+      border-radius:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 20px rgba(2,6,23,0.45);
+      max-width:420px; /* prevent very wide cards to keep centered look */
+      width:100%;
+    }
+    .board-card h4 { margin:0 0 6px; font-size:1rem; color:#e6f7ff; text-align:center; }
+    .board-card p { margin:0; color:#dff9ff; font-size:0.95rem; text-align:center; }
+
+    /* Directors wrapper (keeps original look but improved) */
+    main { padding:28px 0 60px; }
+    .container { max-width:1100px; margin:auto; padding:0 16px; }
+
+    .director-section {
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:22px;
+      border-radius:12px;
+      margin-bottom:28px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      overflow:hidden;
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .director-section:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(2,6,23,0.7); }
+
+    .director-section img {
+      width:100%;
+      max-width:280px;
+      height:auto;
+      border-radius:12px;
+      object-fit:cover;
+      box-shadow:0 18px 50px rgba(2,6,23,0.55);
+      border:4px solid rgba(255,255,255,0.03);
+      transition: transform .4s ease;
+    }
+    .director-section img:hover { transform: scale(1.02); }
+
+    .director-section h2 { color:#e6f7ff; font-size:1.6rem; margin-bottom:6px; font-weight:800; }
+    .director-section h4 { color:#9be7ff; margin-top:0; font-weight:600; font-size:1.02rem; }
+    .director-section p { color:#cfeffc; font-size:0.98rem; line-height:1.6; margin-top:12px; }
+
+    .chips { list-style:none; padding:0; margin:12px 0 18px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .chip { background:rgba(255,255,255,0.03); padding:8px 12px; border-radius:8px; font-weight:700; color:#dff9ff; }
+
+    .btn-primary {
+      display:inline-block; text-decoration:none; padding:10px 16px; border-radius:8px;
+      background:#06b6d4; color:#042027; font-weight:700;
+      box-shadow: 0 8px 20px rgba(6,182,212,0.06);
+    }
+
+    .socials a { color:#cfeffc; text-decoration:none; font-size:1.2rem; margin-right:8px; }
+
+    /* Call to action */
+    .cta {
+      margin-top:18px; padding:18px; border-radius:10px; text-align:center;
+      background: linear-gradient(180deg, rgba(6,182,212,0.06), rgba(255,255,255,0.01));
+      border:1px solid rgba(6,182,212,0.06);
+    }
+
+    /* Footer */
+    .footer-top { padding:36px 0; background:linear-gradient(180deg, #0f1724 0%, #0f1523 100%); margin-top:30px; border-radius:12px; }
+    .footer-top h4 { color:#bfefff; margin-bottom:10px; }
+    .footer-top p, .footer-top a { color:#cfeffc; }
+
+    /* small animations */
+    @keyframes floatIn {
+      from { opacity:0; transform: translateY(8px) scale(.995); }
+      to { opacity:1; transform: translateY(0) scale(1); }
+    }
+
+    /* Responsive: mobile-first adjustments */
+    @media (max-width: 991px) {
+      .about-section { padding:20px; gap:16px; border-radius:10px; }
+      .about-right { display:none; } /* hide side image on tablet & small */
+      .home h1 { font-size:1.9rem; }
+      .header { padding:12px 16px; }
+      .navbar ul { gap:10px; font-size:0.95rem; flex-wrap:wrap; }
+      .about-section p.lead { max-width:100%; }
+    }
+
+    @media (max-width: 720px) {
+      .header { margin:8px auto; width:calc(100% - 32px); }
+      .about-section { padding:16px; border-left-width:5px; }
+      .about-left { min-width:0; }
+      .home h1 { font-size:1.6rem; }
+      .home p { font-size:0.95rem; max-width:92%; }
+      .director-section { padding:16px; }
+      .director-section img { max-width:220px; }
+      .director-section h2 { font-size:1.25rem; }
+      .director-section p { font-size:0.95rem; }
+      .board-list { grid-template-columns: 1fr; }
+      .board-card { padding:10px; }
+      .chips { gap:8px; }
+      .btn-primary { padding:8px 12px; font-size:0.95rem; }
+    }
+
+    /* Very small phones */
+    @media (max-width:420px) {
+      .home { padding:28px 8px; }
+      .header .logo img { width:140px; }
+      .navbar ul { display:none; } /* hide nav for very small screens (could transform to burger later) */
+      .about-section { padding:14px; }
+      .director-section { padding:12px; }
+      .chip { padding:6px 10px; font-size:0.9rem; }
+      .about-section h2 { font-size:1.2rem; }
+      .about-section p.lead { font-size:0.95rem; }
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="logo"><img src="./images/image.png" alt=""></a>
-        <div class="fas fa-bars"></div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.html#home">home</a></li>
-                <li><a href="index.html#about">about</a></li>
-                <li><a href="index.html#service">services</a></li>
-                <li><a href="index.html#portfolio">portfolio</a></li>
-                <li><a href="index.html#team">team</a></li>
-                <li><a href="careers.html">career</a></li>
-                <li><a href="index.html#contact">contact</a></li>
-                <li><a href="index.html#faq">FAQ</a></li>
+
+    
+
+  <!-- Header -->
+  <header class="header" role="banner" aria-label="Main header">
+    <a href="#" class="logo" aria-label="SRRMC home">
+      <img src="./images/logo1.png" alt="SRRMC Logo" />
+    </a>
+
+    <nav class="navbar" role="navigation" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#service">Services</a></li>
+        <li><a href="#portfolio">Quality Assurance</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="home" 
+  style="background-image: url('./images/header2.jpeg'); 
+         background-size: cover; 
+         background-position: center; 
+         background-repeat: no-repeat; 
+         padding: 60px 20px; 
+         text-align: center; 
+         color: white; 
+         min-height: 60vh; 
+         display: flex; 
+         flex-direction: column; 
+         justify-content: center; 
+         align-items: center;">
+
+  <h1 style="font-size: 2.2rem; margin-bottom: 20px;">
+    Building Trust, One Batch at a Time
+  </h1>
+
+  <h2 style="font-size: 1.3rem; max-width: 1000px; margin: 10px auto; line-height: 1.6;">
+    Strength That Lasts, Quality That Matters 
+    <span style="font-weight: bold; font-size: 1.5rem;"> • </span> 
+    Delivering Confidence with Every Mix 
+    <span style="font-weight: bold; font-size: 1.5rem;"> • </span> 
+    Your Trusted Partner in Ready Mix Concrete
+  </h2>
+
+  <div class="wave wave1"></div>
+  <div class="wave wave2"></div>
+  <div class="wave wave3"></div>
+</section>
+
+  <!-- Page hero -->
+  <section id="home" class="home" aria-labelledby="page-title">
+    <div class="container">
+      <h1 id="page-title">Our Company & Our Directors</h1>
+      <!-- <p>Meet the visionary leaders steering our company — experienced professionals who combine technology, strategy and people-first leadership.</p> -->
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION (not a card) -->
+  <section id="about" class="about-section" aria-labelledby="about-title">
+    <div class="about-left">
+      <h2 id="about-title">Welcome to Shri Ram Ready Mix Concrete Pvt. Ltd.</h2>
+
+      <p class="lead">
+        At SRRMC, we pride ourselves on being a leading manufacturer of Ready Mix Concrete (RMC) in the Delhi NCR region.
+        With over 15 years of industry experience, our family-operated business has built a solid foundation of trust, reliability,
+        and commitment to quality. Whether you are embarking on a residential, commercial, or industrial project, we provide
+        top-notch concrete solutions to suit every need.
+      </p>
+
+      <p class="lead" style="margin-top:6px;">
+        We have established a reputation for unmatched quality and dedicated customer service in the construction industry.
+        Our team of seasoned experts ensures that every batch of concrete delivered is crafted to perfection, ensuring the success of your project.
+      </p>
+
+      <h3 class="board-title">OUR CREDENTIALS</h3>
+      <div class="credentials" aria-hidden="false">
+        <div class="cred-item"><i class="fas fa-certificate"></i> Bureau of Indian Standards (BIS)</div>
+        <div class="cred-item"><i class="fas fa-building"></i> Central Public Works Department (CPWD)</div>
+        <div class="cred-item"><i class="fas fa-city"></i> Municipal Corporation of Delhi (MCD)</div>
+        <div class="cred-item"><i class="fas fa-road"></i> Public Works Department (PWD)</div>
+        <div class="cred-item"><i class="fas fa-subway"></i> Delhi Metro Rail Corporation (DMRC)</div>
+        <div class="cred-item"><i class="fas fa-landmark"></i> New Delhi Municipal Corporation (NDMC)</div>
+        <div class="cred-item"><i class="fas fa-industry"></i> Delhi State Industrial & Infrastructure Dev. Corp (DSIIDC)</div>
+        <div class="cred-item"><i class="fas fa-water"></i> Irrigation & Flood Control Department (Flood)</div>
+      </div>
+
+      <!-- <h3 class="board-title">MEET OUR BOARD OF DIRECTORS</h3>
+      <div class="board-list" role="list">
+        <div class="board-card" role="listitem">
+          <h4>Mr. Sanjeev Kumar Gupta</h4>
+          <p>B.E. Civil | 20+ Years of Experience — Specializing in project execution and quality control.</p>
+        </div>
+
+        <div class="board-card" role="listitem">
+          <h4>Mr. Rakesh Kumar Gupta</h4>
+          <p>20 Years of Experience — A financial expert with deep knowledge of managing day-to-day operations.</p>
+        </div>
+
+        <div class="board-card" role="listitem">
+          <h4>Mr. Mayank Goel</h4>
+          <p>15+ Years of Experience — Leading the sales and marketing division, with extensive expertise in the concrete and construction sector.</p>
+        </div>
+
+        <div class="board-card" role="listitem">
+          <h4>Mr. Anuj Gupta</h4>
+          <p>15+ Years of Experience — With a focus on technical expertise and management, Anuj ensures the quality of materials and machinery.</p>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="about-right" aria-hidden="true">
+      <!-- Optional image: company / plant / trucks. Hidden on small screens to keep layout clean -->
+      <img src="./images/plant.jpeg" alt="SRRMC plant and trucks" onerror="this.style.display='none'">
+    </div>
+  </section>
+
+  <!-- Directors wrapper -->
+  <main>
+    <div class="container">
+
+      <!-- Director 1 (image left, text right) -->
+      <section class="director-section" aria-label="Director Sanjeev Kumar Gupta">
+  <div class="row align-items-center" style="max-height:420px; overflow:hidden;">
+    <div class="col-md-6" style="padding:8px;">
+      <div style="display:flex; justify-content:center;">
+        <img src="./images/SG.jpeg" alt="Mr. Sanjeev Kumar Gupta" 
+             style="width:100%; max-width:280px; height:auto; border-radius:12px;" />
+      </div>
+    </div>
+
+    <div class="col-md-6" style="padding:8px;">
+      <div style="padding:12px; text-align:center;">
+        <h2 style="margin-bottom:8px;">Mr. Sanjeev Kumar Gupta</h2>
+        <h4 style="margin-bottom:10px;">Director — Project Execution & Quality</h4>
+        <p style="font-size:15px; line-height:1.4; margin-bottom:12px;">
+          B.E. Civil with 20+ years of hands-on experience in construction management,
+          project execution and quality control. Sanjeev leads our delivery teams,
+          ensuring projects are completed on time with exceptional standards and strong safety practices.
+        </p>
+
+        <ul class="chips" aria-hidden="false" style="padding:0; margin:0; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <li class="chip">20+ years experience</li>
+          <li class="chip">Construction delivery</li>
+          <li class="chip">Quality & Safety</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Director 2 (text left, image right) -->
+      <section class="director-section" aria-label="Director Priya Verma">
+  <div class="row align-items-center" style="max-height:420px; overflow:hidden;">
+    <div class="col-md-6 order-md-2" style="padding:8px;">
+      <div style="display:flex; justify-content:center;">
+        <img src="./images/RG.jpeg" alt="Ms. Priya Verma"
+             style="width:100%; max-width:280px; height:auto; border-radius:12px;" />
+      </div>
+    </div>
+
+    <div class="col-md-6 order-md-1" style="padding:8px;">
+      <div style="padding:12px; text-align:center;">
+        <h2 style="margin-bottom:8px;">Ms. Priya Verma</h2>
+        <h4 style="margin-bottom:10px;">Director — Technology & Innovation</h4>
+        <p style="font-size:15px; line-height:1.4; margin-bottom:12px;">
+          A technology leader with 15+ years of experience driving product strategy,
+          engineering excellence and innovation. Priya focuses on modernising systems,
+          building high-performing teams, and delivering scalable, secure platforms for our clients.
+        </p>
+
+        <ul class="chips" style="padding:0; margin:0; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <li class="chip">Cloud & Architecture</li>
+          <li class="chip">Product Strategy</li>
+          <li class="chip">Team Leadership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="director-section" aria-label="Director Mayank Goel">
+  <div class="row align-items-center" style="max-height:420px; overflow:hidden;">
+    <div class="col-md-6" style="padding:8px;">
+      <div style="display:flex; justify-content:center;">
+        <img src="./images/MG.jpeg" alt="Mr. Mayank Goel"
+             style="width:100%; max-width:280px; height:auto; border-radius:12px;" />
+      </div>
+    </div>
+
+    <div class="col-md-6" style="padding:8px;">
+      <div style="padding:12px; text-align:center;">
+        <h2 style="margin-bottom:8px;">Mr. Mayank Goel</h2>
+        <h4 style="margin-bottom:10px;">Director — Sales & Marketing</h4>
+        <p style="font-size:15px; line-height:1.4; margin-bottom:12px;">
+          Leading the sales and marketing division with 15+ years of experience in the
+          concrete and construction sector. Mayank brings customer-focused strategy and strong market knowledge.
+        </p>
+
+        <ul class="chips" style="padding:0; margin:0; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <li class="chip">Market Leadership</li>
+          <li class="chip">Client Relationships</li>
+          <li class="chip">Business Growth</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="director-section" aria-label="Director Anuj Gupta">
+  <div class="row align-items-center" style="max-height:420px; overflow:hidden;">
+    <div class="col-md-6 order-md-2" style="padding:8px;">
+      <div style="display:flex; justify-content:center;">
+        <img src="./images/AG.jpeg" alt="Mr. Anuj Gupta"
+             style="width:100%; max-width:280px; height:auto; border-radius:12px;" />
+      </div>
+    </div>
+
+    <div class="col-md-6 order-md-1" style="padding:8px;">
+      <div style="padding:12px; text-align:center;">
+        <h2 style="margin-bottom:8px;">Mr. Anuj Gupta</h2>
+        <h4 style="margin-bottom:10px;">Director — Technical & Operations</h4>
+        <p style="font-size:15px; line-height:1.4; margin-bottom:12px;">
+          With 15+ years of experience in technical operations, Anuj focuses on material
+          quality, equipment reliability and ensuring our production meets the highest standards.
+        </p>
+
+        <ul class="chips" style="padding:0; margin:0; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <li class="chip">Technical Expertise</li>
+          <li class="chip">Materials & Machinery</li>
+          <li class="chip">Operational Excellence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Call to action -->
+      <section class="cta" aria-label="Contact call to action">
+        <p style="margin:0; color:#cfeffc; font-size:1rem;">
+          Want to reach out to our leadership? <strong style="color:#fff;">Contact our office</strong> for partnership or career opportunities.
+        </p>
+        <div style="margin-top:12px;">
+          <a class="contact-cta btn-primary" href="index.html#contact" style="font-weight:800;">Get in touch</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div class="footer" role="contentinfo" aria-label="Footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-links" style="font-size:1rem; padding:10px;">
+            <h4>About Us</h4>
+            <ul style="list-style:none; padding:0; margin:8px 0 0;">
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#home">Home</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#about">About us</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#service">Our services</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#home">Terms & condition</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#home">Privacy policy</a></li>
             </ul>
-        </nav>
-    </header>
+          </div>
 
-    <section id="home" class="home">
-        <h2>Home / Careers</h2>
-    </section>
+          <div class="col-lg-3 col-md-6 footer-links" style="font-size:1rem; padding:10px;">
+            <h4>Useful Links</h4>
+            <ul style="list-style:none; padding:0; margin:8px 0 0;">
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#portfolio">Portfolio</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#team">Team</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="careers.html">Career</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#contact">Contact</a></li>
+              <li style="margin:8px 0;"><i class="ion-ios-arrow-forward"></i> <a href="index.html#faq">FAQ</a></li>
+            </ul>
+          </div>
 
-    <section id="career-heading" class="career-heading">
-        <h1 class="heading">Career</h1>
-        <p>Job Opening in IT Company. Apply Now!</p>
-    </section>
-    <div class="career">
-        <div class="career-form">
-            <form action="./careers.php" method="POST" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Name" class="career-form-txt" required>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="Contact number" maxlength="10" class="career-form-phone">
-                <input type="email" name="email" placeholder="Email" class="career-form-email" required>
-                <div class="radio-class">
-                    <h2 class="name">Apply For Which Post?</h2>
-                <label class="radio">
-                  <input class="radio-one" type="radio" checked="checked" name="status" value="Web Designer">
-                  <span class="checkmark"></span>
-                  Web Designer
-                </label>
-                <label class="radio">
-                  <input class="radio-two" type="radio" name="status" value="Web Developer">
-                  <span class="checkmark"></span>
-                  Web Developer
-                </label>
-                <label class="radio">
-                  <input class="radio-three" type="radio" name="status" value="Mobile App Designer">
-                  <span class="checkmark"></span>
-                  Mobile App Designer
-                </label>
-                <label class="radio">
-                    <input class="radio-four" type="radio" name="status" value="Mobile App Developer">
-                    <span class="checkmark"></span>
-                    Mobile App Developer
-                  </label>
-                <label class="radio">
-                  <input class="radio-five" type="radio"  name="status" value="Digital Marketer">
-                  <span class="checkmark"></span>
-                  Digital Marketer
-                </label>
-                </div>
-                <input type="number" id="experience" name="experience" required placeholder="Years of Experience" class="career-form-experience">
-                <textarea placeholder="Other Details" name="details" class="career-form-txtarea" required></textarea>
-                <div class="file">
-                    <h2 class="name">Upload Your Resume</h2>
-                    <input class="upload" type="file" name="fileToUpload" accept=".doc,.docx,.pdf"><br><br><br>
-                </div>
-                <input type="submit" value="Submit" name="submit" class="career-form-btn">
-            </form>
+          <div class="col-lg-3 col-md-6 footer-contact" style="font-size:1rem; padding:10px;">
+            <h4>Contact Us</h4>
+            <p>
+                          B-177, 1st Floor, Derawal Nagar, New Delhi - 110009 <br>
+                          <strong>Phone:</strong> +91-9910019982 |<br> +91-9899000785<br>
+                          <strong>Email:</strong> info@shriramrmc.com | srcconcrete@yahoo.com<br>
+                      </p>
+
+            <div class="social-links" style="display:flex; gap:10px; margin-top:8px;">
+              <a href="https://www.facebook.com/"><i class="ion-logo-facebook"></i></a>
+              <a href="https://twitter.com/login?lang=en"><i class="ion-logo-twitter"></i></a>
+              <a href="https://www.linkedin.com/"><i class="ion-logo-linkedin"></i></a>
+              <a href="https://www.instagram.com/"><i class="ion-logo-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+    <h4>UNITS</h4>
+
+    <p>
+        <strong>UNIT 1</strong><br>
+        Kh. No. 434, Village Sabhapur,<br>
+        Sonia Vihar, Delhi – 110094
+    </p>
+
+    <p>
+        <strong>UNIT 2</strong><br>
+        Kh. No. 126, Village Mundka,<br>
+        Rajdhani Park Metro Station,<br>
+        Delhi – 110041
+    </p>
+
+    <!-- <form action="" method="post">
+        <input type="email" name="email" placeholder="Enter your email">
+        <input type="submit" value="Subscribe">
+    </form> -->
+</div>
+
+
         </div>
+      </div>
     </div>
 
-      <div class="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>About Us</h4>
-                        <ul>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#home">Home</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#about">About us</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#service">Our services</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#home">Terms & condition</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#home">Privacy policy</a></li>
-                        </ul>
-                    </div>
-  
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#portfolio">Portfolio</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#team">Team</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="careers.html">Career</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#contact">Contact</a></li>
-                            <li><i class="ion-ios-arrow-forward"></i> <a href="index.html#faq">FAQ</a></li>
-                        </ul>
-                    </div>
-  
-                    <div class="col-lg-3 col-md-6 footer-contact" style="font-size: 1.5rem;">
-                        <h4>Contact Us</h4>
-                        <p>
-                            1300  Center Avenue<br>
-                            Fresno, California<br>
-                            United States <br>
-                            <strong>Phone:</strong> +123-456-7890<br>
-                            <strong>Email:</strong> info@example.com<br>
-                        </p>
-  
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/"><i class="ion-logo-facebook"></i></a>
-                            <a href="https://twitter.com/login?lang=en"><i class="ion-logo-twitter"></i></a>
-                            <a href="https://www.linkedin.com/"><i class="ion-logo-linkedin"></i></a>
-                            <a href="https://www.instagram.com/"><i class="ion-logo-instagram"></i></a>
-                            <a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="ion-logo-googleplus"></i></a>
-                        </div>
-  
-                    </div>
-  
-                    <div class="col-lg-3 col-md-6 footer-newsletter">
-                        <h4>Subscription</h4>
-                        <p>With Our Skills Put Together, You Get An Ensemble Capable Of Doing Anything And Everything Your Brand Needs. Subscribe Here To Get Our Latest Updates.</p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit"  value="Subscribe">
-                        </form>
-                    </div>
-  
-                </div>
-            </div>
+    <div class="container" style="padding:18px 0;">
+      <div class="row align-items-center">
+        <div class="col-md-6 copyright" style="color:#9be7ff; font-size:1rem;">
+          Copyright &copy; 2021 SRRMC. All Rights Reserved.
         </div>
-  
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 copyright" style="color: #fff; font-size: 1.3rem;">
-                    Copyright &copy; 2021 IT Company Website. All Rights Reserved.
-                </div>
-            </div>
+        <div class="col-md-6" style="text-align:right;">
+          <a href="#" class="back-to-top" style="text-decoration:none; color:#cfeffc;"><i class="ion-ios-arrow-up" style="font-size:1.2rem;"></i> Back to top</a>
         </div>
+      </div>
     </div>
+  </div>
 
-    <a href="#" class="back-to-top"><i class="ion-ios-arrow-up"></i></a>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script>
+    // Back to top smooth scroll
+    document.querySelectorAll('.back-to-top').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
 
+    // small accessibility: focus outline when tabbing
+    document.body.addEventListener('keyup', function(e){
+      if(e.key === 'Tab'){
+        document.documentElement.classList.add('show-focus');
+      }
+    });
+  </script>
 </body>
 </html>
