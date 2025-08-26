@@ -223,7 +223,8 @@ a.cta:hover {
 }
 
 .second {
-  background-color: #fff8e6;
+   background-color: #FFFFFF;
+  background-image: linear-gradient(315deg, #a7a8a8 0%, #E9EBEC 74%);
 }
 
 .second .container {
@@ -269,7 +270,8 @@ a.cta:hover {
 }
 
 .third {
-  background-color: #e6f5fc;
+   background-color: #FFFFFF;
+  background-image: linear-gradient(315deg, #a7a8a8 0%, #E9EBEC 74%);
 }
 
 @media (min-width: 768px) {
@@ -297,7 +299,7 @@ a.cta:hover {
 }
 
 .four {
-  background-color: #35358a;
+  background-color: #052e4d;
 }
 
 .four .container {
