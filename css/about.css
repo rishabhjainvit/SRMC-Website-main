@@ -132,7 +132,7 @@ h6 {
 }
 
 .header .navbar ul li a{
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: #000000;
 }
 
@@ -297,7 +297,7 @@ a.cta:hover {
 }
 
 .four {
-  background-color: #2c2ca9;
+  background-color: #35358a;
 }
 
 .four .container {
